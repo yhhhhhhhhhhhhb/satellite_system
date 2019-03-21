@@ -3,9 +3,9 @@ package com.satellite.system.service;
 
 
 import com.satellite.system.bean.TUser;
+import com.satellite.system.model.User;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author:yuanhu
@@ -15,13 +15,14 @@ import java.util.Map;
  */
 public interface UserService {
 
-    TUser getUserById(Integer id);
+    Integer login(String userName,String passWord);
 
-    List<TUser> getUserList();
+    Integer updateUser(TUser tUser);
 
-    int add(TUser user);
+    List<User> getAllUser();
 
-    int update(TUser user);
+    Integer deleteUser(String userName);
 
-    List<Map<String,Object>> getListMyName(String name);
+    Integer addUser(TUser user);
+
 }

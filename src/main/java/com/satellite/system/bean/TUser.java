@@ -1,11 +1,18 @@
 package com.satellite.system.bean;
 
+import java.util.Date;
+
 public class TUser {
+
     private Integer id;
 
-    private String name;
+    private String username;
 
-    private String adress;
+    private String password;
+
+    private Integer role;
+
+    private Date create_time;
 
     public Integer getId() {
         return id;
@@ -15,19 +22,36 @@ public class TUser {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+
+    public Integer getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getUsername() {
+        return username;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress == null ? null : adress.trim();
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 }

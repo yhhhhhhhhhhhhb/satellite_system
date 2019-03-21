@@ -25,14 +25,14 @@ public class JsonResult {
 
     /**
      * 失败返回
-     * @param data
+     * @param message
      * @return
      */
-    public static JSONObject buildFaild(Object data){
+    public static JSONObject buildFaild(String message){
         JSONObject json_send = new JSONObject();
         json_send.put("code", CodeEnum.ERRAE.getCode());
-        json_send.put("message", CodeEnum.ERRAE.getMessage());
-        json_send.put("data", data);
+        json_send.put("message", message);
+        json_send.put("data", null);
         return json_send;
     }
 }
