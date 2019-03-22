@@ -1,0 +1,12 @@
+server:
+ port: 8081
+spring:
+ datasource:
+  driver-class-name: com.mysql.jdbc.Driver
+  type: com.alibaba.druid.pool.DruidDataSource
+  url: jdbc:mysql:/xxxx
+  username: xxxx
+  password: xxx
+
+mybatis:
+type-aliases-package: com.satellite.system.bean
