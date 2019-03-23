@@ -4,6 +4,9 @@ import com.satellite.system.bean.TTaskAllocation;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.SelectProvider;
+
+import java.util.List;
 
 /**
  * @Author:yuanhu
@@ -19,5 +22,8 @@ public interface TaskAllocationMapper {
 
     @Delete("delete from task_allocation where id = #{taskId}")
     int delectTask(Integer taskId);
+
+    @SelectProvider(type = TaskAllocationSqlProvider.class,method = "queryTaskAssignment")
+    List<TTaskAllocation> queryTask(TTaskAllocation tTaskAllocation);
 
 }

@@ -49,7 +49,7 @@ public class TSatelliteInfo {
 
     private Float perigeeAngularDistance;
 
-    private Date perigeeMoment;
+    private Float perigeeMoment;
 
     public Integer getId() {
         return id;
@@ -235,11 +235,40 @@ public class TSatelliteInfo {
         this.perigeeAngularDistance = perigeeAngularDistance;
     }
 
-    public Date getPerigeeMoment() {
+    public Float getPerigeeMoment() {
         return perigeeMoment;
     }
 
-    public void setPerigeeMoment(Date perigeeMoment) {
+    public void setPerigeeMoment(Float perigeeMoment) {
+        this.perigeeMoment = perigeeMoment;
+    }
+
+    public TSatelliteInfo() {
+    }
+
+    public TSatelliteInfo(String number, String nasaNumber, String name, String constellationNumber, String type, String telemetryFrequency, String telemetryErpValue, String remoteFrequency, String remoteReceivingGain, String dataDownlink, String erpValue, String dataUplinkFrequency, String dataUplinkReceiveGain, String businessDownlinkFrequency, String businessDownlinkErpValue, String businessUplinkFrequency, String serviceUplinkReceiveGain, Float inclination, Float ascendingPoint, Float eccentricity, Float semiLongAxis, Float perigeeAngularDistance, Float perigeeMoment) {
+        this.number = number;
+        this.nasaNumber = nasaNumber;
+        this.name = name;
+        this.constellationNumber = constellationNumber;
+        this.type = type;
+        this.telemetryFrequency = telemetryFrequency;
+        this.telemetryErpValue = telemetryErpValue;
+        this.remoteFrequency = remoteFrequency;
+        this.remoteReceivingGain = remoteReceivingGain;
+        this.dataDownlink = dataDownlink;
+        this.erpValue = erpValue;
+        this.dataUplinkFrequency = dataUplinkFrequency;
+        this.dataUplinkReceiveGain = dataUplinkReceiveGain;
+        this.businessDownlinkFrequency = businessDownlinkFrequency;
+        this.businessDownlinkErpValue = businessDownlinkErpValue;
+        this.businessUplinkFrequency = businessUplinkFrequency;
+        this.serviceUplinkReceiveGain = serviceUplinkReceiveGain;
+        this.inclination = inclination;
+        this.ascendingPoint = ascendingPoint;
+        this.eccentricity = eccentricity;
+        this.semiLongAxis = semiLongAxis;
+        this.perigeeAngularDistance = perigeeAngularDistance;
         this.perigeeMoment = perigeeMoment;
     }
 }

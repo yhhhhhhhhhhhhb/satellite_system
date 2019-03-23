@@ -42,6 +42,7 @@ public class TaskAllocationController {
             Date planEndTime = (Date)map_recv.get("planEndTime");
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             TTaskAllocation tTaskAllocation = new TTaskAllocation(stationNum,satelliteNum,taskType,planStartTime,planEndTime);
+            taskAllocationService.addTaskAssignment(tTaskAllocation);
             JSONObject json_send = JsonResult.buildSuccess(tTaskAllocation);
             response.setHeader("Access-Control-Allow-Origin", "*");
             return json_send;

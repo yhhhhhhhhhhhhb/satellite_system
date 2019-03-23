@@ -50,4 +50,14 @@ public class TConstellationInfo {
     public void setBelonePeople(String belonePeople) {
         this.belonePeople = belonePeople == null ? null : belonePeople.trim();
     }
+
+    public TConstellationInfo() {
+    }
+
+    public TConstellationInfo(String number, String name, Integer type, String belonePeople) {
+        this.number = number;
+        this.name = name;
+        this.type = type;
+        this.belonePeople = belonePeople;
+    }
 }

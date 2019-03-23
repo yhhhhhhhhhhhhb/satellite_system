@@ -26,7 +26,7 @@ public interface LogMapper {
     @Update("update user set username = #{user.username},password = #{user.password},role=#{user.role},create_time=#{user.create_time} where id =#{user.id}")
     int updateLog(TLog user);
 
-    @Delete("delete from log where where `datetime` > #{time1} and `datetime`<#{time2}\"")
+    @Delete("delete from log where where `datetime` > #{time1} and `datetime`<#{time2}")
     int deleteLog(@Param("time1") Date time1, @Param("time2") Date time2);
 
     @Insert("inert into user(username,password,role,create_time) values (#{user.username},#{user.password},#{user.role},#{user.create_time})")

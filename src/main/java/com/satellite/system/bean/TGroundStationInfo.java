@@ -1,5 +1,7 @@
 package com.satellite.system.bean;
 
+import java.math.BigDecimal;
+
 public class TGroundStationInfo {
     private Integer id;
 
@@ -25,9 +27,9 @@ public class TGroundStationInfo {
 
     private String dataUplinkErpValue;
 
-    private Float longitude;
+    private BigDecimal longitude;
 
-    private Float latitude;
+    private BigDecimal latitude;
 
     private String address;
 
@@ -127,19 +129,19 @@ public class TGroundStationInfo {
         this.dataUplinkErpValue = dataUplinkErpValue == null ? null : dataUplinkErpValue.trim();
     }
 
-    public Float getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Float longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
-    public Float getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
@@ -149,5 +151,25 @@ public class TGroundStationInfo {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+
+    public TGroundStationInfo() {
+    }
+
+    public TGroundStationInfo(String number, String name, String type, String telemetryFrequency, String telemetryGain, String remoteControlFrequency, String remoteErpValue, String dataDownlinkFrequency, String dataDownlinkGain, String dataUplinkFrequency, String dataUplinkErpValue, BigDecimal longitude, BigDecimal latitude, String address) {
+        this.number = number;
+        this.name = name;
+        this.type = type;
+        this.telemetryFrequency = telemetryFrequency;
+        this.telemetryGain = telemetryGain;
+        this.remoteControlFrequency = remoteControlFrequency;
+        this.remoteErpValue = remoteErpValue;
+        this.dataDownlinkFrequency = dataDownlinkFrequency;
+        this.dataDownlinkGain = dataDownlinkGain;
+        this.dataUplinkFrequency = dataUplinkFrequency;
+        this.dataUplinkErpValue = dataUplinkErpValue;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.address = address;
     }
 }
