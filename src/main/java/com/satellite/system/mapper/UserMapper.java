@@ -30,13 +30,13 @@ public interface UserMapper {
     @Select("select * from user")
     List<TUser> getAllUser();
 
-    @Update("update user set username = #{user.username},password = #{user.password},role=#{user.role},create_time=#{user.create_time} where id =#{user.id}")
+    @Update("update user set username = #{username},password = #{password},role=#{role},create_time=#{create_time} where id =#{id}")
     int updateUser(TUser user);
 
     @Delete("delete from user where username = #{userName}")
     int deleteUser(String userName);
 
-    @Insert("inert into user(username,password,role,create_time) values (#{user.username},#{user.password},#{user.role},#{user.create_time})")
+    @Insert("insert into user(username,password,role,create_time) values (#{username},#{password},#{role},#{create_time})")
     int addUser(TUser user);
 
 }

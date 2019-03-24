@@ -2,7 +2,6 @@ package com.satellite.system.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.satellite.system.bean.TConstellationInfo;
-import com.satellite.system.bean.TSatelliteInfo;
 import com.satellite.system.service.ConstellationInfoService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
@@ -41,6 +40,7 @@ public class ConstellationInfoController {
             JSONObject json_send = JsonResult.buildSuccess(constellationInfos);
             return json_send;
         } catch (Exception e) {
+            logger.error("",e);
             return JsonResult.buildFaild("查询星座失败，请联系管理员！");
         }
     }
@@ -56,6 +56,7 @@ public class ConstellationInfoController {
             JSONObject json_send = JsonResult.buildSuccess(constellationInfos);
             return json_send;
         } catch (Exception e) {
+            logger.error("",e);
             return JsonResult.buildFaild("查询星座失败，请联系管理员！");
         }
     }
@@ -68,13 +69,14 @@ public class ConstellationInfoController {
             response.setHeader("Access-Control-Allow-Origin", "*");
             String number = (String) map_recv.get("constellationId");
             String constellationName = (String) map_recv.get("constellationName");
-            Integer constellationType = (Integer) map_recv.get("constellationType");
+            Integer constellationType = Integer.parseInt((String) map_recv.get("constellationType"));
             String constellationOwners = (String) map_recv.get("constellationOwners");
             TConstellationInfo constellationInfo = new TConstellationInfo(number,constellationName,constellationType,constellationOwners);
             Integer affect = constellationInfoService.addTConstellationInfo(constellationInfo);
             JSONObject json_send = JsonResult.buildSuccess(affect);
             return json_send;
         } catch (Exception e) {
+            logger.error("",e);
             return JsonResult.buildFaild("新增星座信息失败，请联系管理员！");
         }
     }
@@ -87,14 +89,15 @@ public class ConstellationInfoController {
             response.setHeader("Access-Control-Allow-Origin", "*");
             String number = (String) map_recv.get("constellationId");
             String constellationName = (String) map_recv.get("constellationName");
-            Integer constellationType = (Integer) map_recv.get("constellationType");
+            Integer constellationType = Integer.parseInt((String) map_recv.get("constellationType"));
             String constellationOwners = (String) map_recv.get("constellationOwners");
             TConstellationInfo constellationInfo = new TConstellationInfo(number,constellationName,constellationType,constellationOwners);
             Integer affect = constellationInfoService.updateTConstellationInfo(constellationInfo);
             JSONObject json_send = JsonResult.buildSuccess(affect);
             return json_send;
         } catch (Exception e) {
-            return JsonResult.buildFaild("新增星座信息失败，请联系管理员！");
+            logger.error("",e);
+            return JsonResult.buildFaild("更新星座信息失败，请联系管理员！");
         }
     }
 

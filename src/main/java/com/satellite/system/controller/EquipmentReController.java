@@ -36,12 +36,13 @@ public class EquipmentReController {
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-            Integer satellited = (Integer) map_recv.get("satelliteId");
-            List<TEquipmentRe> list = equipmentReService.queryDeviceRelation(satellited);
+            String satellited = (String) map_recv.get("satelliteId");
+            List<TEquipmentRe> list = equipmentReService.queryDeviceRelation(Integer.parseInt(satellited));
             JSONObject json_send = JsonResult.buildSuccess(list);
             response.setHeader("Access-Control-Allow-Origin", "*");
             return json_send;
         } catch (Exception e) {
+            logger.error("",e);
             return JsonResult.buildFaild("查询设备关系失败！");
         }
     }

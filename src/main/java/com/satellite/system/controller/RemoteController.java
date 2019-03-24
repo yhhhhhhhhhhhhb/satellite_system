@@ -43,6 +43,7 @@ public class RemoteController {
             response.setHeader("Access-Control-Allow-Origin", "*");
             return json_send;
         } catch (Exception e) {
+            logger.error("",e);
             return JsonResult.buildFaild("遥控内容查询失败，请联系管理员！");
         }
     }

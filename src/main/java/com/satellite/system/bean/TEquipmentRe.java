@@ -3,9 +3,11 @@ package com.satellite.system.bean;
 public class TEquipmentRe {
     private Integer id;
 
-    private String equipmentName;
+    private String equipment_name;
 
-    private String parentDeviceName;
+    private String parent_device_name;
+
+    private Integer satellite_id;
 
     public Integer getId() {
         return id;
@@ -15,19 +17,27 @@ public class TEquipmentRe {
         this.id = id;
     }
 
-    public String getEquipmentName() {
-        return equipmentName;
+    public String getEquipment_name() {
+        return equipment_name;
     }
 
-    public void setEquipmentName(String equipmentName) {
-        this.equipmentName = equipmentName == null ? null : equipmentName.trim();
+    public void setEquipment_name(String equipment_name) {
+        this.equipment_name = equipment_name;
     }
 
-    public String getParentDeviceName() {
-        return parentDeviceName;
+    public String getParent_device_name() {
+        return parent_device_name;
     }
 
-    public void setParentDeviceName(String parentDeviceName) {
-        this.parentDeviceName = parentDeviceName == null ? null : parentDeviceName.trim();
+    public void setParent_device_name(String parent_device_name) {
+        this.parent_device_name = parent_device_name;
+    }
+
+    public Integer getSatellite_id() {
+        return satellite_id;
+    }
+
+    public void setSatellite_id(Integer satellite_id) {
+        this.satellite_id = satellite_id;
     }
 }

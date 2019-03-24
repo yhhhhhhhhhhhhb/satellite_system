@@ -4,6 +4,7 @@ import com.satellite.system.bean.TEquipmentRe;
 import com.satellite.system.mapper.EquipmentReMapper;
 import com.satellite.system.service.EquipmentReService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @Date: Created in 11:34 2019/3/23
  * @Modified By:
  */
+@Service
 public class EquipmentReServiceImpl implements EquipmentReService{
 
     @Autowired

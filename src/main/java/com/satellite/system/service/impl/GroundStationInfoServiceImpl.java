@@ -4,6 +4,7 @@ import com.satellite.system.bean.TGroundStationInfo;
 import com.satellite.system.mapper.GroundStationInfoMapper;
 import com.satellite.system.service.GroundStationInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @Date: Created in 13:40 2019/3/23
  * @Modified By:
  */
+@Service
 public class GroundStationInfoServiceImpl implements GroundStationInfoService{
     @Autowired
     GroundStationInfoMapper groundStationInfoMapper;

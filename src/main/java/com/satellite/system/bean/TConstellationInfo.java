@@ -9,7 +9,7 @@ public class TConstellationInfo {
 
     private Integer type;
 
-    private String belonePeople;
+    private String belone_people;
 
     public Integer getId() {
         return id;
@@ -43,21 +43,21 @@ public class TConstellationInfo {
         this.type = type;
     }
 
-    public String getBelonePeople() {
-        return belonePeople;
+    public String getBelone_people() {
+        return belone_people;
     }
 
-    public void setBelonePeople(String belonePeople) {
-        this.belonePeople = belonePeople == null ? null : belonePeople.trim();
+    public void setBelone_people(String belone_people) {
+        this.belone_people = belone_people;
     }
 
     public TConstellationInfo() {
     }
 
-    public TConstellationInfo(String number, String name, Integer type, String belonePeople) {
+    public TConstellationInfo(String number, String name, Integer type, String belone_people) {
         this.number = number;
         this.name = name;
         this.type = type;
-        this.belonePeople = belonePeople;
+        this.belone_people = belone_people;
     }
 }

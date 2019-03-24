@@ -3,9 +3,9 @@ package com.satellite.system.bean;
 public class TRemote {
     private Integer id;
 
-    private String taskNumber;
+    private String task_number;
 
-    private String taskContent;
+    private String task_content;
 
     public Integer getId() {
         return id;
@@ -15,19 +15,19 @@ public class TRemote {
         this.id = id;
     }
 
-    public String getTaskNumber() {
-        return taskNumber;
+    public String getTask_number() {
+        return task_number;
     }
 
-    public void setTaskNumber(String taskNumber) {
-        this.taskNumber = taskNumber == null ? null : taskNumber.trim();
+    public void setTask_number(String task_number) {
+        this.task_number = task_number;
     }
 
-    public String getTaskContent() {
-        return taskContent;
+    public String getTask_content() {
+        return task_content;
     }
 
-    public void setTaskContent(String taskContent) {
-        this.taskContent = taskContent == null ? null : taskContent.trim();
+    public void setTask_content(String task_content) {
+        this.task_content = task_content;
     }
 }

@@ -21,14 +21,17 @@ public class TaskAllocationSqlProvider {
             {
                SELECT("*");
                FROM("task_allocation");
-               if(tTaskAllocation.getTaskNumber()!=null){
-                   WHERE("task_number=#{taskNumber}");
+               if(tTaskAllocation.getId()!=null){
+                   WHERE("id=#{id}");
                }
-               if(tTaskAllocation.getSatelliteNumber()!=null){
-                   WHERE("satellite_number=#{satelliteNumber}");
+               if(tTaskAllocation.getSatellite_number()!=null){
+                   WHERE("satellite_number=#{satellite_number}");
                }
-               if(StringUtils.isNotBlank(tTaskAllocation.getStationNumber())){
-                   WHERE("station_number=#{stationNumber}");
+               if(tTaskAllocation.getTask_number()!=null){
+                   WHERE("task_type = #{task_type}");
+               }
+               if(StringUtils.isNotBlank(tTaskAllocation.getStation_number())){
+                   WHERE("station_number=#{station_number}");
                }
             }
         }.toString();

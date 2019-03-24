@@ -42,6 +42,7 @@ public class SatelliteInfoController {
             response.setHeader("Access-Control-Allow-Origin", "*");
             return json_send;
         } catch (Exception e) {
+            logger.error("下行数据失败",e);
             return JsonResult.buildFaild("下行数据查询失败，请联系管理员！");
         }
     }
@@ -97,18 +98,19 @@ public class SatelliteInfoController {
             String businessDownErp = (String) map_recv.get("businessDownErp");
             String businessUpFre = (String) map_recv.get("businessUpFre");
             String businessUpGain = (String) map_recv.get("businessUpGain");
-            Float dipAngle = (Float) map_recv.get("dipAngle");
-            Float chek = (Float) map_recv.get("chek");
-            Float eccentricity = (Float) map_recv.get("eccentricity");
-            Float semiMajorAxis = (Float) map_recv.get("semiMajorAxis");
-            Float perigeeAngle = (Float) map_recv.get("perigeeAngle");
-            Float perigeeTime = (Float) map_recv.get("perigeeTime");
+            Float dipAngle = Float.parseFloat((String) map_recv.get("dipAngle"));
+            Float chek = Float.parseFloat((String) map_recv.get("chek"));
+            Float eccentricity = Float.parseFloat((String) map_recv.get("eccentricity"));
+            Float semiMajorAxis = Float.parseFloat((String) map_recv.get("semiMajorAxis"));
+            Float perigeeAngle = Float.parseFloat((String) map_recv.get("perigeeAngle"));
+            Float perigeeTime = Float.parseFloat((String) map_recv.get("perigeeTime"));
             TSatelliteInfo tSatelliteInfo = new TSatelliteInfo(satelliteId,nasaId,satelliteName,constellationId,satelliteType,telemetryFre,telemetryErp,telecontrolFre,telecontrolGain,dataDownFre,dataDownErp,dataUpFre,dataUpGain,businessDownFre,businessDownErp,businessUpFre,businessUpGain,dipAngle,chek,eccentricity,semiMajorAxis,perigeeAngle,perigeeTime);
             Integer i = satelliteInfoService.addSatelliteInfo(tSatelliteInfo);
             JSONObject json_send = JsonResult.buildSuccess(i);
             return json_send;
         }catch (Exception e) {
-            return JsonResult.buildFaild("卫星信息查询失败，请联系管理员！");
+            logger.error("",e);
+            return JsonResult.buildFaild("卫星信息新增失败，请联系管理员！");
         }
     }
 
@@ -150,18 +152,19 @@ public class SatelliteInfoController {
             String businessDownErp = (String) map_recv.get("businessDownErp");
             String businessUpFre = (String) map_recv.get("businessUpFre");
             String businessUpGain = (String) map_recv.get("businessUpGain");
-            Float dipAngle = (Float) map_recv.get("dipAngle");
-            Float chek = (Float) map_recv.get("chek");
-            Float eccentricity = (Float) map_recv.get("eccentricity");
-            Float semiMajorAxis = (Float) map_recv.get("semiMajorAxis");
-            Float perigeeAngle = (Float) map_recv.get("perigeeAngle");
-            Float perigeeTime = (Float) map_recv.get("perigeeTime");
+            Float dipAngle = Float.parseFloat((String) map_recv.get("dipAngle"));
+            Float chek = Float.parseFloat((String) map_recv.get("chek"));
+            Float eccentricity = Float.parseFloat((String) map_recv.get("eccentricity"));
+            Float semiMajorAxis = Float.parseFloat((String) map_recv.get("semiMajorAxis"));
+            Float perigeeAngle = Float.parseFloat((String) map_recv.get("perigeeAngle"));
+            Float perigeeTime = Float.parseFloat((String) map_recv.get("perigeeTime"));
             TSatelliteInfo tSatelliteInfo = new TSatelliteInfo(satelliteId,nasaId,satelliteName,constellationId,satelliteType,telemetryFre,telemetryErp,telecontrolFre,telecontrolGain,dataDownFre,dataDownErp,dataUpFre,dataUpGain,businessDownFre,businessDownErp,businessUpFre,businessUpGain,dipAngle,chek,eccentricity,semiMajorAxis,perigeeAngle,perigeeTime);
             Integer i = satelliteInfoService.updateSatelliteInfo(tSatelliteInfo);
             JSONObject json_send = JsonResult.buildSuccess(i);
             return json_send;
         }catch (Exception e) {
-            return JsonResult.buildFaild("卫星信息查询失败，请联系管理员！");
+            logger.error("",e);
+            return JsonResult.buildFaild("跟新卫星信息失败，请联系管理员！");
         }
     }
 

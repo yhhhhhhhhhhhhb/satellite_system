@@ -1,6 +1,7 @@
 package com.satellite.system.mapper;
 
 import com.satellite.system.bean.TFieldDefinition;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @Date: Created in 11:41 2019/3/23
  * @Modified By:
  */
+@Mapper
 public interface FieldDefinitionMapper {
 
     @Select("select * from field_definition where satellite_id = #{satelliteId}")

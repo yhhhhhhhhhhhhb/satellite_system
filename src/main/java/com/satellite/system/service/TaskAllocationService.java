@@ -2,6 +2,8 @@ package com.satellite.system.service;
 
 import com.satellite.system.bean.TTaskAllocation;
 
+import java.util.List;
+
 /**
  * @Author:yuanhu
  * @Description:
@@ -13,4 +15,6 @@ public interface TaskAllocationService {
     Integer addTaskAssignment(TTaskAllocation tTaskAllocation);
 
     Integer cancelTask(Integer taskId);
+
+    List<TTaskAllocation> queryTaskAssignment(TTaskAllocation tTaskAllocation);
 }

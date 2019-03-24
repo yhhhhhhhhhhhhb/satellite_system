@@ -61,15 +61,18 @@ public class GroundStationInfoController {
             String dataDownGain = (String) map_recv.get("dataDownGain");
             String dataUpFre = (String) map_recv.get("dataUpFre");
             String dateUpErp = (String) map_recv.get("dataUpErp");
-            BigDecimal lon = (BigDecimal) map_recv.get("lon");
-            BigDecimal lat = (BigDecimal) map_recv.get("lat");
+            String lon = (String) map_recv.get("lon");
+            String lat = (String) map_recv.get("lat");
             String ip = (String) map_recv.get("ip");
-            TGroundStationInfo tGroundStationInfo = new TGroundStationInfo(number,groundName,groundType,groundTelementryFre,groundTelemetryGain,groundTelecontrolFre,groundTelecontrolErp,dataDownFre,dataDownGain,dataUpFre,dateUpErp,lon,lat,ip);
+            BigDecimal lonb = new BigDecimal(lon);
+            BigDecimal latb = new BigDecimal(lat);
+            TGroundStationInfo tGroundStationInfo = new TGroundStationInfo(number,groundName,groundType,groundTelementryFre,groundTelemetryGain,groundTelecontrolFre,groundTelecontrolErp,dataDownFre,dataDownGain,dataUpFre,dateUpErp,lonb,latb,ip);
             Integer i = groundStationInfoService.addGroundStationInfo(tGroundStationInfo);
             response.setHeader("Access-Control-Allow-Origin", "*");
             JSONObject json_send = JsonResult.buildSuccess(i);
             return json_send;
         } catch (Exception e) {
+            logger.error("",e);
             return JsonResult.buildFaild("新增地面站信息失败！");
         }
     }
@@ -106,14 +109,17 @@ public class GroundStationInfoController {
             String dataDownGain = (String) map_recv.get("dataDownGain");
             String dataUpFre = (String) map_recv.get("dataUpFre");
             String dateUpErp = (String) map_recv.get("dataUpErp");
-            BigDecimal lon = (BigDecimal) map_recv.get("lon");
-            BigDecimal lat = (BigDecimal) map_recv.get("lat");
+            String lon = (String) map_recv.get("lon");
+            String lat = (String) map_recv.get("lat");
             String ip = (String) map_recv.get("ip");
-            TGroundStationInfo tGroundStationInfo = new TGroundStationInfo(number,groundName,groundType,groundTelementryFre,groundTelemetryGain,groundTelecontrolFre,groundTelecontrolErp,dataDownFre,dataDownGain,dataUpFre,dateUpErp,lon,lat,ip);
+            BigDecimal lonb = new BigDecimal(lon);
+            BigDecimal latb = new BigDecimal(lat);
+            TGroundStationInfo tGroundStationInfo = new TGroundStationInfo(number,groundName,groundType,groundTelementryFre,groundTelemetryGain,groundTelecontrolFre,groundTelecontrolErp,dataDownFre,dataDownGain,dataUpFre,dateUpErp,lonb,latb,ip);
             Integer i = groundStationInfoService.updateGroundStationInfo(tGroundStationInfo);
             JSONObject json_send = JsonResult.buildSuccess(i);
             return json_send;
         } catch (Exception e) {
+            logger.error("",e);
             return JsonResult.buildFaild("更新地面站信息失败！");
         }
     }

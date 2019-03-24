@@ -7,49 +7,49 @@ public class TSatelliteInfo {
 
     private String number;
 
-    private String nasaNumber;
+    private String nasa_number;
 
     private String name;
 
-    private String constellationNumber;
+    private String constellation_number;
 
     private String type;
 
-    private String telemetryFrequency;
+    private String telemetry_frequency;
 
-    private String telemetryErpValue;
+    private String telemetry_erp_value;
 
-    private String remoteFrequency;
+    private String remote_frequency;
 
-    private String remoteReceivingGain;
+    private String remote_receiving_gain;
 
-    private String dataDownlink;
+    private String data_downlink;
 
-    private String erpValue;
+    private String erp_value;
 
-    private String dataUplinkFrequency;
+    private String data_uplink_frequency;
 
-    private String dataUplinkReceiveGain;
+    private String data_uplink_receive_gain;
 
-    private String businessDownlinkFrequency;
+    private String business_downlink_frequency;
 
-    private String businessDownlinkErpValue;
+    private String business_downlink_erp_value;
 
-    private String businessUplinkFrequency;
+    private String business_uplink_frequency;
 
-    private String serviceUplinkReceiveGain;
+    private String service_uplink_receive_gain;
 
     private Float inclination;
 
-    private Float ascendingPoint;
+    private Float ascending_point;
 
     private Float eccentricity;
 
-    private Float semiLongAxis;
+    private Float semi_long_axis;
 
-    private Float perigeeAngularDistance;
+    private Float perigee_angular_distance;
 
-    private Float perigeeMoment;
+    private Float perigee_moment;
 
     public Integer getId() {
         return id;
@@ -67,12 +67,12 @@ public class TSatelliteInfo {
         this.number = number == null ? null : number.trim();
     }
 
-    public String getNasaNumber() {
-        return nasaNumber;
+    public String getNasa_number() {
+        return nasa_number;
     }
 
-    public void setNasaNumber(String nasaNumber) {
-        this.nasaNumber = nasaNumber == null ? null : nasaNumber.trim();
+    public void setNasa_number(String nasa_number) {
+        this.nasa_number = nasa_number;
     }
 
     public String getName() {
@@ -80,15 +80,15 @@ public class TSatelliteInfo {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
-    public String getConstellationNumber() {
-        return constellationNumber;
+    public String getConstellation_number() {
+        return constellation_number;
     }
 
-    public void setConstellationNumber(String constellationNumber) {
-        this.constellationNumber = constellationNumber == null ? null : constellationNumber.trim();
+    public void setConstellation_number(String constellation_number) {
+        this.constellation_number = constellation_number;
     }
 
     public String getType() {
@@ -96,103 +96,103 @@ public class TSatelliteInfo {
     }
 
     public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+        this.type = type;
     }
 
-    public String getTelemetryFrequency() {
-        return telemetryFrequency;
+    public String getTelemetry_frequency() {
+        return telemetry_frequency;
     }
 
-    public void setTelemetryFrequency(String telemetryFrequency) {
-        this.telemetryFrequency = telemetryFrequency == null ? null : telemetryFrequency.trim();
+    public void setTelemetry_frequency(String telemetry_frequency) {
+        this.telemetry_frequency = telemetry_frequency;
     }
 
-    public String getTelemetryErpValue() {
-        return telemetryErpValue;
+    public String getTelemetry_erp_value() {
+        return telemetry_erp_value;
     }
 
-    public void setTelemetryErpValue(String telemetryErpValue) {
-        this.telemetryErpValue = telemetryErpValue == null ? null : telemetryErpValue.trim();
+    public void setTelemetry_erp_value(String telemetry_erp_value) {
+        this.telemetry_erp_value = telemetry_erp_value;
     }
 
-    public String getRemoteFrequency() {
-        return remoteFrequency;
+    public String getRemote_frequency() {
+        return remote_frequency;
     }
 
-    public void setRemoteFrequency(String remoteFrequency) {
-        this.remoteFrequency = remoteFrequency == null ? null : remoteFrequency.trim();
+    public void setRemote_frequency(String remote_frequency) {
+        this.remote_frequency = remote_frequency;
     }
 
-    public String getRemoteReceivingGain() {
-        return remoteReceivingGain;
+    public String getRemote_receiving_gain() {
+        return remote_receiving_gain;
     }
 
-    public void setRemoteReceivingGain(String remoteReceivingGain) {
-        this.remoteReceivingGain = remoteReceivingGain == null ? null : remoteReceivingGain.trim();
+    public void setRemote_receiving_gain(String remote_receiving_gain) {
+        this.remote_receiving_gain = remote_receiving_gain;
     }
 
-    public String getDataDownlink() {
-        return dataDownlink;
+    public String getData_downlink() {
+        return data_downlink;
     }
 
-    public void setDataDownlink(String dataDownlink) {
-        this.dataDownlink = dataDownlink == null ? null : dataDownlink.trim();
+    public void setData_downlink(String data_downlink) {
+        this.data_downlink = data_downlink;
     }
 
-    public String getErpValue() {
-        return erpValue;
+    public String getErp_value() {
+        return erp_value;
     }
 
-    public void setErpValue(String erpValue) {
-        this.erpValue = erpValue == null ? null : erpValue.trim();
+    public void setErp_value(String erp_value) {
+        this.erp_value = erp_value;
     }
 
-    public String getDataUplinkFrequency() {
-        return dataUplinkFrequency;
+    public String getData_uplink_frequency() {
+        return data_uplink_frequency;
     }
 
-    public void setDataUplinkFrequency(String dataUplinkFrequency) {
-        this.dataUplinkFrequency = dataUplinkFrequency == null ? null : dataUplinkFrequency.trim();
+    public void setData_uplink_frequency(String data_uplink_frequency) {
+        this.data_uplink_frequency = data_uplink_frequency;
     }
 
-    public String getDataUplinkReceiveGain() {
-        return dataUplinkReceiveGain;
+    public String getData_uplink_receive_gain() {
+        return data_uplink_receive_gain;
     }
 
-    public void setDataUplinkReceiveGain(String dataUplinkReceiveGain) {
-        this.dataUplinkReceiveGain = dataUplinkReceiveGain == null ? null : dataUplinkReceiveGain.trim();
+    public void setData_uplink_receive_gain(String data_uplink_receive_gain) {
+        this.data_uplink_receive_gain = data_uplink_receive_gain;
     }
 
-    public String getBusinessDownlinkFrequency() {
-        return businessDownlinkFrequency;
+    public String getBusiness_downlink_frequency() {
+        return business_downlink_frequency;
     }
 
-    public void setBusinessDownlinkFrequency(String businessDownlinkFrequency) {
-        this.businessDownlinkFrequency = businessDownlinkFrequency == null ? null : businessDownlinkFrequency.trim();
+    public void setBusiness_downlink_frequency(String business_downlink_frequency) {
+        this.business_downlink_frequency = business_downlink_frequency;
     }
 
-    public String getBusinessDownlinkErpValue() {
-        return businessDownlinkErpValue;
+    public String getBusiness_downlink_erp_value() {
+        return business_downlink_erp_value;
     }
 
-    public void setBusinessDownlinkErpValue(String businessDownlinkErpValue) {
-        this.businessDownlinkErpValue = businessDownlinkErpValue == null ? null : businessDownlinkErpValue.trim();
+    public void setBusiness_downlink_erp_value(String business_downlink_erp_value) {
+        this.business_downlink_erp_value = business_downlink_erp_value;
     }
 
-    public String getBusinessUplinkFrequency() {
-        return businessUplinkFrequency;
+    public String getBusiness_uplink_frequency() {
+        return business_uplink_frequency;
     }
 
-    public void setBusinessUplinkFrequency(String businessUplinkFrequency) {
-        this.businessUplinkFrequency = businessUplinkFrequency == null ? null : businessUplinkFrequency.trim();
+    public void setBusiness_uplink_frequency(String business_uplink_frequency) {
+        this.business_uplink_frequency = business_uplink_frequency;
     }
 
-    public String getServiceUplinkReceiveGain() {
-        return serviceUplinkReceiveGain;
+    public String getService_uplink_receive_gain() {
+        return service_uplink_receive_gain;
     }
 
-    public void setServiceUplinkReceiveGain(String serviceUplinkReceiveGain) {
-        this.serviceUplinkReceiveGain = serviceUplinkReceiveGain == null ? null : serviceUplinkReceiveGain.trim();
+    public void setService_uplink_receive_gain(String service_uplink_receive_gain) {
+        this.service_uplink_receive_gain = service_uplink_receive_gain;
     }
 
     public Float getInclination() {
@@ -203,12 +203,12 @@ public class TSatelliteInfo {
         this.inclination = inclination;
     }
 
-    public Float getAscendingPoint() {
-        return ascendingPoint;
+    public Float getAscending_point() {
+        return ascending_point;
     }
 
-    public void setAscendingPoint(Float ascendingPoint) {
-        this.ascendingPoint = ascendingPoint;
+    public void setAscending_point(Float ascending_point) {
+        this.ascending_point = ascending_point;
     }
 
     public Float getEccentricity() {
@@ -219,56 +219,56 @@ public class TSatelliteInfo {
         this.eccentricity = eccentricity;
     }
 
-    public Float getSemiLongAxis() {
-        return semiLongAxis;
+    public Float getSemi_long_axis() {
+        return semi_long_axis;
     }
 
-    public void setSemiLongAxis(Float semiLongAxis) {
-        this.semiLongAxis = semiLongAxis;
+    public void setSemi_long_axis(Float semi_long_axis) {
+        this.semi_long_axis = semi_long_axis;
     }
 
-    public Float getPerigeeAngularDistance() {
-        return perigeeAngularDistance;
+    public Float getPerigee_angular_distance() {
+        return perigee_angular_distance;
     }
 
-    public void setPerigeeAngularDistance(Float perigeeAngularDistance) {
-        this.perigeeAngularDistance = perigeeAngularDistance;
+    public void setPerigee_angular_distance(Float perigee_angular_distance) {
+        this.perigee_angular_distance = perigee_angular_distance;
     }
 
-    public Float getPerigeeMoment() {
-        return perigeeMoment;
+    public Float getPerigee_moment() {
+        return perigee_moment;
     }
 
-    public void setPerigeeMoment(Float perigeeMoment) {
-        this.perigeeMoment = perigeeMoment;
+    public void setPerigee_moment(Float perigee_moment) {
+        this.perigee_moment = perigee_moment;
     }
 
     public TSatelliteInfo() {
     }
 
-    public TSatelliteInfo(String number, String nasaNumber, String name, String constellationNumber, String type, String telemetryFrequency, String telemetryErpValue, String remoteFrequency, String remoteReceivingGain, String dataDownlink, String erpValue, String dataUplinkFrequency, String dataUplinkReceiveGain, String businessDownlinkFrequency, String businessDownlinkErpValue, String businessUplinkFrequency, String serviceUplinkReceiveGain, Float inclination, Float ascendingPoint, Float eccentricity, Float semiLongAxis, Float perigeeAngularDistance, Float perigeeMoment) {
+    public TSatelliteInfo(String number, String nasa_number, String name, String constellation_number, String type, String telemetry_frequency, String telemetry_erp_value, String remote_frequency, String remote_receiving_gain, String data_downlink, String erp_value, String data_uplink_frequency, String data_uplink_receive_gain, String business_downlink_frequency, String business_downlink_erp_value, String business_uplink_frequency, String service_uplink_receive_gain, Float inclination, Float ascending_point, Float eccentricity, Float semi_long_axis, Float perigee_angular_distance, Float perigee_moment) {
         this.number = number;
-        this.nasaNumber = nasaNumber;
+        this.nasa_number = nasa_number;
         this.name = name;
-        this.constellationNumber = constellationNumber;
+        this.constellation_number = constellation_number;
         this.type = type;
-        this.telemetryFrequency = telemetryFrequency;
-        this.telemetryErpValue = telemetryErpValue;
-        this.remoteFrequency = remoteFrequency;
-        this.remoteReceivingGain = remoteReceivingGain;
-        this.dataDownlink = dataDownlink;
-        this.erpValue = erpValue;
-        this.dataUplinkFrequency = dataUplinkFrequency;
-        this.dataUplinkReceiveGain = dataUplinkReceiveGain;
-        this.businessDownlinkFrequency = businessDownlinkFrequency;
-        this.businessDownlinkErpValue = businessDownlinkErpValue;
-        this.businessUplinkFrequency = businessUplinkFrequency;
-        this.serviceUplinkReceiveGain = serviceUplinkReceiveGain;
+        this.telemetry_frequency = telemetry_frequency;
+        this.telemetry_erp_value = telemetry_erp_value;
+        this.remote_frequency = remote_frequency;
+        this.remote_receiving_gain = remote_receiving_gain;
+        this.data_downlink = data_downlink;
+        this.erp_value = erp_value;
+        this.data_uplink_frequency = data_uplink_frequency;
+        this.data_uplink_receive_gain = data_uplink_receive_gain;
+        this.business_downlink_frequency = business_downlink_frequency;
+        this.business_downlink_erp_value = business_downlink_erp_value;
+        this.business_uplink_frequency = business_uplink_frequency;
+        this.service_uplink_receive_gain = service_uplink_receive_gain;
         this.inclination = inclination;
-        this.ascendingPoint = ascendingPoint;
+        this.ascending_point = ascending_point;
         this.eccentricity = eccentricity;
-        this.semiLongAxis = semiLongAxis;
-        this.perigeeAngularDistance = perigeeAngularDistance;
-        this.perigeeMoment = perigeeMoment;
+        this.semi_long_axis = semi_long_axis;
+        this.perigee_angular_distance = perigee_angular_distance;
+        this.perigee_moment = perigee_moment;
     }
 }

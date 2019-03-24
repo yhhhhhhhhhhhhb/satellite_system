@@ -32,8 +32,9 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("/login")
-    public JSONObject getById(HttpServletRequest request, HttpServletResponse response) {
+    public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
+        response.setHeader("Access-Control-Allow-Origin", "*");
         String userName = (String) map_recv.get("userName");
         String password = (String) map_recv.get("password");
         logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
@@ -41,7 +42,7 @@ public class UserController {
         Map<String,Integer> map = new HashMap<>();
         map.put("isLogin",count);
         JSONObject json_send = JsonResult.buildSuccess(map);
-        response.setHeader("Access-Control-Allow-Origin", "*");
+
         return json_send;
     }
 
@@ -67,51 +68,66 @@ public class UserController {
 
     @RequestMapping("/editUsers")
     public JSONObject editUsers(HttpServletRequest request, HttpServletResponse response){
-        Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-        String id = (String)map_recv.get("id");
-        String userName = (String) map_recv.get("userName");
-        String password = (String) map_recv.get("password");
-        String permission = (String) map_recv.get("permission");
-        TUser user = new TUser();
-        user.setId(Integer.parseInt(id));
-        user.setUsername(userName);
-        user.setPassword(password);
-        user.setRole(Integer.parseInt(permission));
-        user.setCreate_time(new Date());
-        logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-        userService.updateUser(user);
-        JSONObject json_send = JsonResult.buildSuccess("");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        return json_send;
+        try {
+            Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
+            String id = (String)map_recv.get("id");
+            String userName = (String) map_recv.get("userName");
+            String password = (String) map_recv.get("password");
+            String permission = (String) map_recv.get("permission");
+            TUser user = new TUser();
+            user.setId(Integer.parseInt(id));
+            user.setUsername(userName);
+            user.setPassword(password);
+            user.setRole(Integer.parseInt(permission));
+            user.setCreate_time(new Date());
+            logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
+            Integer affect = userService.updateUser(user);
+            JSONObject json_send = JsonResult.buildSuccess(affect);
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            return json_send;
+        } catch (NumberFormatException e) {
+            logger.error("",e);
+            return JsonResult.buildFaild("编辑用户信息失败！");
+        }
     }
 
     @RequestMapping("/deleteUsers")
     public JSONObject deleteUsers(HttpServletRequest request, HttpServletResponse response){
-        Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-        String userName = (String) map_recv.get("userName");
-        logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-        userService.deleteUser(userName);
-        JSONObject json_send = JsonResult.buildSuccess("");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        return json_send;
+        try {
+            Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
+            String userName = (String) map_recv.get("userName");
+            logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
+            Integer affect = userService.deleteUser(userName);
+            JSONObject json_send = JsonResult.buildSuccess(affect);
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            return json_send;
+        } catch (Exception e) {
+            logger.error("",e);
+            return JsonResult.buildFaild("删除用户信息失败！");
+        }
     }
 
     @RequestMapping("/addUsers")
     public JSONObject addUsers(HttpServletRequest request, HttpServletResponse response){
-        Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-        String userName = (String) map_recv.get("userName");
-        String password = (String) map_recv.get("password");
-        String permission = (String) map_recv.get("permission");
-        TUser user = new TUser();
-        user.setUsername(userName);
-        user.setPassword(password);
-        user.setRole(Integer.parseInt(permission));
-        user.setCreate_time(new Date());
-        logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-        Integer i = userService.addUser(user);
-        JSONObject json_send = JsonResult.buildSuccess(i);
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        return json_send;
+        try {
+            Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
+            String userName = (String) map_recv.get("userName");
+            String password = (String) map_recv.get("password");
+            String permission = (String) map_recv.get("permission");
+            TUser user = new TUser();
+            user.setUsername(userName);
+            user.setPassword(password);
+            user.setRole(Integer.parseInt(permission));
+            user.setCreate_time(new Date());
+            logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
+            Integer i = userService.addUser(user);
+            JSONObject json_send = JsonResult.buildSuccess(i);
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            return json_send;
+        } catch (Exception e) {
+            logger.error("",e);
+            return JsonResult.buildFaild("新增用户失败");
+        }
     }
 
 

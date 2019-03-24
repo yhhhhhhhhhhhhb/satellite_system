@@ -14,9 +14,9 @@ import java.util.List;
 public interface LogService {
 
 
-    List<TLog> queryLog(Date time1,Date time2);
+    List<TLog> queryLog(String time1,String time2);
 
-    Integer deleteLog(Date time1,Date time2);
+    Integer deleteLog(String time1,String time2);
 
 
 }

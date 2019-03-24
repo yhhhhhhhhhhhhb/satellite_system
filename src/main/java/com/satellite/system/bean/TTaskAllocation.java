@@ -3,30 +3,29 @@ package com.satellite.system.bean;
 import java.util.Date;
 
 public class TTaskAllocation {
-
     private Integer id;
 
-    private Integer taskNumber;
+    private Integer task_number;
 
-    private String stationNumber;
+    private String station_number;
 
-    private Integer satelliteNumber;
+    private Integer satellite_number;
 
-    private Integer taskType;
+    private Integer task_type;
 
-    private Date developmentDate;
+    private Date development_date;
 
-    private Date plannedStartDate;
+    private Date planned_start_date;
 
-    private Date planDeadline;
+    private Date plan_deadline;
 
-    private Date taskStartDate;
+    private Date task_start_date;
 
-    private Date taskEndDate;
+    private Date task_end_date;
 
-    private Integer distributionMark;
+    private Integer distribution_mark;
 
-    private Integer dataDistributionFlag;
+    private Integer data_distribution_flag;
 
     private String ack;
 
@@ -38,92 +37,92 @@ public class TTaskAllocation {
         this.id = id;
     }
 
-    public Integer getTaskNumber() {
-        return taskNumber;
+    public Integer getTask_number() {
+        return task_number;
     }
 
-    public void setTaskNumber(Integer taskNumber) {
-        this.taskNumber = taskNumber;
+    public void setTask_number(Integer task_number) {
+        this.task_number = task_number;
     }
 
-    public String getStationNumber() {
-        return stationNumber;
+    public String getStation_number() {
+        return station_number;
     }
 
-    public void setStationNumber(String stationNumber) {
-        this.stationNumber = stationNumber == null ? null : stationNumber.trim();
+    public void setStation_number(String station_number) {
+        this.station_number = station_number == null ? null : station_number.trim();
     }
 
-    public Integer getSatelliteNumber() {
-        return satelliteNumber;
+    public Integer getSatellite_number() {
+        return satellite_number;
     }
 
-    public void setSatelliteNumber(Integer satelliteNumber) {
-        this.satelliteNumber = satelliteNumber;
+    public void setSatellite_number(Integer satellite_number) {
+        this.satellite_number = satellite_number;
     }
 
-    public Integer getTaskType() {
-        return taskType;
+    public Integer getTask_type() {
+        return task_type;
     }
 
-    public void setTaskType(Integer taskType) {
-        this.taskType = taskType;
+    public void setTask_type(Integer task_type) {
+        this.task_type = task_type;
     }
 
-    public Date getDevelopmentDate() {
-        return developmentDate;
+    public Date getDevelopment_date() {
+        return development_date;
     }
 
-    public void setDevelopmentDate(Date developmentDate) {
-        this.developmentDate = developmentDate;
+    public void setDevelopment_date(Date development_date) {
+        this.development_date = development_date;
     }
 
-    public Date getPlannedStartDate() {
-        return plannedStartDate;
+    public Date getPlanned_start_date() {
+        return planned_start_date;
     }
 
-    public void setPlannedStartDate(Date plannedStartDate) {
-        this.plannedStartDate = plannedStartDate;
+    public void setPlanned_start_date(Date planned_start_date) {
+        this.planned_start_date = planned_start_date;
     }
 
-    public Date getPlanDeadline() {
-        return planDeadline;
+    public Date getPlan_deadline() {
+        return plan_deadline;
     }
 
-    public void setPlanDeadline(Date planDeadline) {
-        this.planDeadline = planDeadline;
+    public void setPlan_deadline(Date plan_deadline) {
+        this.plan_deadline = plan_deadline;
     }
 
-    public Date getTaskStartDate() {
-        return taskStartDate;
+    public Date getTask_start_date() {
+        return task_start_date;
     }
 
-    public void setTaskStartDate(Date taskStartDate) {
-        this.taskStartDate = taskStartDate;
+    public void setTask_start_date(Date task_start_date) {
+        this.task_start_date = task_start_date;
     }
 
-    public Date getTaskEndDate() {
-        return taskEndDate;
+    public Date getTask_end_date() {
+        return task_end_date;
     }
 
-    public void setTaskEndDate(Date taskEndDate) {
-        this.taskEndDate = taskEndDate;
+    public void setTask_end_date(Date task_end_date) {
+        this.task_end_date = task_end_date;
     }
 
-    public Integer getDistributionMark() {
-        return distributionMark;
+    public Integer getDistribution_mark() {
+        return distribution_mark;
     }
 
-    public void setDistributionMark(Integer distributionMark) {
-        this.distributionMark = distributionMark;
+    public void setDistribution_mark(Integer distribution_mark) {
+        this.distribution_mark = distribution_mark;
     }
 
-    public Integer getDataDistributionFlag() {
-        return dataDistributionFlag;
+    public Integer getData_distribution_flag() {
+        return data_distribution_flag;
     }
 
-    public void setDataDistributionFlag(Integer dataDistributionFlag) {
-        this.dataDistributionFlag = dataDistributionFlag;
+    public void setData_distribution_flag(Integer data_distribution_flag) {
+        this.data_distribution_flag = data_distribution_flag;
     }
 
     public String getAck() {
@@ -134,14 +133,14 @@ public class TTaskAllocation {
         this.ack = ack == null ? null : ack.trim();
     }
 
-    public TTaskAllocation() {
+    public TTaskAllocation(String station_number, Integer satellite_number, Integer task_type, Date planned_start_date, Date plan_deadline) {
+        this.station_number = station_number;
+        this.satellite_number = satellite_number;
+        this.task_type = task_type;
+        this.planned_start_date = planned_start_date;
+        this.plan_deadline = plan_deadline;
     }
 
-    public TTaskAllocation(String stationNumber, Integer satelliteNumber, Integer taskType, Date plannedStartDate, Date planDeadline) {
-        this.stationNumber = stationNumber;
-        this.satelliteNumber = satelliteNumber;
-        this.taskType = taskType;
-        this.plannedStartDate = plannedStartDate;
-        this.planDeadline = planDeadline;
+    public TTaskAllocation() {
     }
 }

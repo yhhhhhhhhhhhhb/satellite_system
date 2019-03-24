@@ -5,17 +5,19 @@ public class TFieldDefinition {
 
     private String name;
 
-    private Integer dataType;
+    private Integer data_type;
 
-    private Double maxValue;
+    private Double max_value;
 
-    private Double minValue;
+    private Double min_value;
 
     private String unit;
 
-    private Byte displaySign;
+    private Byte display_sign;
 
-    private String equipmentName;
+    private String equipment_name;
+
+    private Integer satellite_id;
 
     public Integer getId() {
         return id;
@@ -33,28 +35,28 @@ public class TFieldDefinition {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getDataType() {
-        return dataType;
+    public Integer getData_type() {
+        return data_type;
     }
 
-    public void setDataType(Integer dataType) {
-        this.dataType = dataType;
+    public void setData_type(Integer data_type) {
+        this.data_type = data_type;
     }
 
-    public Double getMaxValue() {
-        return maxValue;
+    public Double getMax_value() {
+        return max_value;
     }
 
-    public void setMaxValue(Double maxValue) {
-        this.maxValue = maxValue;
+    public void setMax_value(Double max_value) {
+        this.max_value = max_value;
     }
 
-    public Double getMinValue() {
-        return minValue;
+    public Double getMin_value() {
+        return min_value;
     }
 
-    public void setMinValue(Double minValue) {
-        this.minValue = minValue;
+    public void setMin_value(Double min_value) {
+        this.min_value = min_value;
     }
 
     public String getUnit() {
@@ -62,22 +64,30 @@ public class TFieldDefinition {
     }
 
     public void setUnit(String unit) {
-        this.unit = unit == null ? null : unit.trim();
+        this.unit = unit;
     }
 
-    public Byte getDisplaySign() {
-        return displaySign;
+    public Byte getDisplay_sign() {
+        return display_sign;
     }
 
-    public void setDisplaySign(Byte displaySign) {
-        this.displaySign = displaySign;
+    public void setDisplay_sign(Byte display_sign) {
+        this.display_sign = display_sign;
     }
 
-    public String getEquipmentName() {
-        return equipmentName;
+    public String getEquipment_name() {
+        return equipment_name;
     }
 
-    public void setEquipmentName(String equipmentName) {
-        this.equipmentName = equipmentName == null ? null : equipmentName.trim();
+    public void setEquipment_name(String equipment_name) {
+        this.equipment_name = equipment_name;
+    }
+
+    public Integer getSatellite_id() {
+        return satellite_id;
+    }
+
+    public void setSatellite_id(Integer satellite_id) {
+        this.satellite_id = satellite_id;
     }
 }

@@ -1,6 +1,7 @@
 package com.satellite.system.mapper;
 
 import com.satellite.system.bean.TEquipmentRe;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @Date: Created in 11:28 2019/3/23
  * @Modified By:
  */
+@Mapper
 public interface EquipmentReMapper {
 
 

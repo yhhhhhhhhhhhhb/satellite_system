@@ -11,21 +11,21 @@ public class TGroundStationInfo {
 
     private String type;
 
-    private String telemetryFrequency;
+    private String telemetry_frequency;
 
-    private String telemetryGain;
+    private String telemetry_gain;
 
-    private String remoteControlFrequency;
+    private String remote_control_frequency;
 
-    private String remoteErpValue;
+    private String remote_erp_value;
 
-    private String dataDownlinkFrequency;
+    private String data_downlink_frequency;
 
-    private String dataDownlinkGain;
+    private String data_downlink_gain;
 
-    private String dataUplinkFrequency;
+    private String data_uplink_frequency;
 
-    private String dataUplinkErpValue;
+    private String data_uplink_erp_value;
 
     private BigDecimal longitude;
 
@@ -65,68 +65,68 @@ public class TGroundStationInfo {
         this.type = type == null ? null : type.trim();
     }
 
-    public String getTelemetryFrequency() {
-        return telemetryFrequency;
+    public String getTelemetry_frequency() {
+        return telemetry_frequency;
     }
 
-    public void setTelemetryFrequency(String telemetryFrequency) {
-        this.telemetryFrequency = telemetryFrequency == null ? null : telemetryFrequency.trim();
+    public void setTelemetry_frequency(String telemetry_frequency) {
+        this.telemetry_frequency = telemetry_frequency;
     }
 
-    public String getTelemetryGain() {
-        return telemetryGain;
+    public String getTelemetry_gain() {
+        return telemetry_gain;
     }
 
-    public void setTelemetryGain(String telemetryGain) {
-        this.telemetryGain = telemetryGain == null ? null : telemetryGain.trim();
+    public void setTelemetry_gain(String telemetry_gain) {
+        this.telemetry_gain = telemetry_gain;
     }
 
-    public String getRemoteControlFrequency() {
-        return remoteControlFrequency;
+    public String getRemote_control_frequency() {
+        return remote_control_frequency;
     }
 
-    public void setRemoteControlFrequency(String remoteControlFrequency) {
-        this.remoteControlFrequency = remoteControlFrequency == null ? null : remoteControlFrequency.trim();
+    public void setRemote_control_frequency(String remote_control_frequency) {
+        this.remote_control_frequency = remote_control_frequency;
     }
 
-    public String getRemoteErpValue() {
-        return remoteErpValue;
+    public String getRemote_erp_value() {
+        return remote_erp_value;
     }
 
-    public void setRemoteErpValue(String remoteErpValue) {
-        this.remoteErpValue = remoteErpValue == null ? null : remoteErpValue.trim();
+    public void setRemote_erp_value(String remote_erp_value) {
+        this.remote_erp_value = remote_erp_value;
     }
 
-    public String getDataDownlinkFrequency() {
-        return dataDownlinkFrequency;
+    public String getData_downlink_frequency() {
+        return data_downlink_frequency;
     }
 
-    public void setDataDownlinkFrequency(String dataDownlinkFrequency) {
-        this.dataDownlinkFrequency = dataDownlinkFrequency == null ? null : dataDownlinkFrequency.trim();
+    public void setData_downlink_frequency(String data_downlink_frequency) {
+        this.data_downlink_frequency = data_downlink_frequency;
     }
 
-    public String getDataDownlinkGain() {
-        return dataDownlinkGain;
+    public String getData_downlink_gain() {
+        return data_downlink_gain;
     }
 
-    public void setDataDownlinkGain(String dataDownlinkGain) {
-        this.dataDownlinkGain = dataDownlinkGain == null ? null : dataDownlinkGain.trim();
+    public void setData_downlink_gain(String data_downlink_gain) {
+        this.data_downlink_gain = data_downlink_gain;
     }
 
-    public String getDataUplinkFrequency() {
-        return dataUplinkFrequency;
+    public String getData_uplink_frequency() {
+        return data_uplink_frequency;
     }
 
-    public void setDataUplinkFrequency(String dataUplinkFrequency) {
-        this.dataUplinkFrequency = dataUplinkFrequency == null ? null : dataUplinkFrequency.trim();
+    public void setData_uplink_frequency(String data_uplink_frequency) {
+        this.data_uplink_frequency = data_uplink_frequency;
     }
 
-    public String getDataUplinkErpValue() {
-        return dataUplinkErpValue;
+    public String getData_uplink_erp_value() {
+        return data_uplink_erp_value;
     }
 
-    public void setDataUplinkErpValue(String dataUplinkErpValue) {
-        this.dataUplinkErpValue = dataUplinkErpValue == null ? null : dataUplinkErpValue.trim();
+    public void setData_uplink_erp_value(String data_uplink_erp_value) {
+        this.data_uplink_erp_value = data_uplink_erp_value;
     }
 
     public BigDecimal getLongitude() {
@@ -156,18 +156,18 @@ public class TGroundStationInfo {
     public TGroundStationInfo() {
     }
 
-    public TGroundStationInfo(String number, String name, String type, String telemetryFrequency, String telemetryGain, String remoteControlFrequency, String remoteErpValue, String dataDownlinkFrequency, String dataDownlinkGain, String dataUplinkFrequency, String dataUplinkErpValue, BigDecimal longitude, BigDecimal latitude, String address) {
+    public TGroundStationInfo(String number, String name, String type, String telemetry_frequency, String telemetry_gain, String remote_control_frequency, String remote_erp_value, String data_downlink_frequency, String data_downlink_gain, String data_uplink_frequency, String data_uplink_erp_value, BigDecimal longitude, BigDecimal latitude, String address) {
         this.number = number;
         this.name = name;
         this.type = type;
-        this.telemetryFrequency = telemetryFrequency;
-        this.telemetryGain = telemetryGain;
-        this.remoteControlFrequency = remoteControlFrequency;
-        this.remoteErpValue = remoteErpValue;
-        this.dataDownlinkFrequency = dataDownlinkFrequency;
-        this.dataDownlinkGain = dataDownlinkGain;
-        this.dataUplinkFrequency = dataUplinkFrequency;
-        this.dataUplinkErpValue = dataUplinkErpValue;
+        this.telemetry_frequency = telemetry_frequency;
+        this.telemetry_gain = telemetry_gain;
+        this.remote_control_frequency = remote_control_frequency;
+        this.remote_erp_value = remote_erp_value;
+        this.data_downlink_frequency = data_downlink_frequency;
+        this.data_downlink_gain = data_downlink_gain;
+        this.data_uplink_frequency = data_uplink_frequency;
+        this.data_uplink_erp_value = data_uplink_erp_value;
         this.longitude = longitude;
         this.latitude = latitude;
         this.address = address;
