@@ -14,7 +14,7 @@ public interface TaskAllocationService {
 
     Integer addTaskAssignment(TTaskAllocation tTaskAllocation);
 
-    Integer cancelTask(Integer taskId);
+    Integer cancelTask(String taskId);
 
     List<TTaskAllocation> queryTaskAssignment(TTaskAllocation tTaskAllocation);
 }

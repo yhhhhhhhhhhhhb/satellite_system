@@ -27,7 +27,7 @@ public class TaskAllocationServiceImpl implements TaskAllocationService{
     }
 
     @Override
-    public Integer cancelTask(Integer taskId) {
+    public Integer cancelTask(String taskId) {
         Integer affect = taskAllocationMapper.delectTask(taskId);
         return affect;
     }

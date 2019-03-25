@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 
 import java.util.List;
@@ -22,8 +23,8 @@ public interface TaskAllocationMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int addTask(TTaskAllocation tTaskAllocation);
 
-    @Delete("delete from task_allocation where id = #{id}")
-    int delectTask(Integer taskId);
+    @Delete("delete from task_allocation where id in (${taskId})")
+    int delectTask(@Param("taskId") String taskId);
 
     @SelectProvider(type = TaskAllocationSqlProvider.class,method = "queryTaskAssignment")
     List<TTaskAllocation> queryTask(TTaskAllocation tTaskAllocation);

@@ -59,12 +59,10 @@ public class TaskAllocationController {
     public JSONObject cancelTask(HttpServletRequest request, HttpServletResponse response){
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-            String taskID = (String) map_recv.get("taskId");
+            String taskIDs = (String) map_recv.get("taskIds");
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-            taskAllocationService.cancelTask(Integer.parseInt(taskID));
-            Map<String,Integer> map = new HashMap<>();
-            map.put("taskId",Integer.parseInt(taskID));
-            JSONObject json_send = JsonResult.buildSuccess(map);
+            Integer affect = taskAllocationService.cancelTask(taskIDs);
+            JSONObject json_send = JsonResult.buildSuccess(affect);
             response.setHeader("Access-Control-Allow-Origin", "*");
             return json_send;
         } catch (Exception e) {
