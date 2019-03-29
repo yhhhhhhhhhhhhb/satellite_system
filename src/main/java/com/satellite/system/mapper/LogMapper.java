@@ -31,6 +31,6 @@ public interface LogMapper {
     @Delete("delete from log where `datetime` > #{time1} and `datetime`<#{time2}")
     int deleteLog(@Param("time1") String time1, @Param("time2") String time2);
 
-    @Insert("inert into user(username,password,role,create_time) values (#{user.username},#{user.password},#{user.role},#{user.create_time})")
-    int addLog(TLog user);
+    @Insert("insert into log(datetime,object,type,data) values (#{datetime},#{object},#{type},#{data})")
+    int addLog(TLog log);
 }

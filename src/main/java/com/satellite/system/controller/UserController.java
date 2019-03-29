@@ -1,8 +1,10 @@
 package com.satellite.system.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.satellite.system.bean.TLog;
 import com.satellite.system.bean.TUser;
 import com.satellite.system.model.User;
+import com.satellite.system.service.LogService;
 import com.satellite.system.service.UserService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
@@ -28,22 +30,38 @@ import java.util.Map;
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     UserService userService;
 
+    @Autowired
+    LogService logService;
+
     @RequestMapping("/login")
     public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
-        Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        String userName = (String) map_recv.get("userName");
-        String password = (String) map_recv.get("password");
-        logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-        Integer count = userService.login(userName,password);
-        Map<String,Integer> map = new HashMap<>();
-        map.put("isLogin",count);
-        JSONObject json_send = JsonResult.buildSuccess(map);
+        try {
+            Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            String userName = (String) map_recv.get("userName");
+            String password = (String) map_recv.get("password");
+            logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
+            Integer count = userService.login(userName,password);
+            Map<String,Integer> map = new HashMap<>();
+            map.put("isLogin",count);
+            if(count>0){
+                TLog log = new TLog(new Date(),"登录模块",12000,userName+"登录成功！");
+                logService.addLog(log);
+            }else {
+                TLog log = new TLog(new Date(),"登录模块",12000,userName+"登录失败！");
+                logService.addLog(log);
+            }
+            JSONObject json_send = JsonResult.buildSuccess(map);
 
-        return json_send;
+            return json_send;
+        } catch (Exception e) {
+            logger.error("登录失败！",e);
+            return JsonResult.buildFaild("登录失败！");
+        }
     }
 
     @RequestMapping("/exit")
@@ -53,6 +71,8 @@ public class UserController {
         logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
         JSONObject json_send = JsonResult.buildSuccess("");
         response.setHeader("Access-Control-Allow-Origin", "*");
+        TLog log = new TLog(new Date(),"登录模块",12001,userName+"退出！");
+        logService.addLog(log);
         return json_send;
     }
 

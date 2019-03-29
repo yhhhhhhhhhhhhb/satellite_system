@@ -6,6 +6,7 @@ import com.satellite.system.bean.TTaskAllocation;
 import com.satellite.system.service.RemoteService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class RemoteController {
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             String ids = (String) map_recv.get("taskID");
+            if(StringUtils.isBlank(ids)){
+                return JsonResult.buildFaild("未传参数");
+            }
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             List<TRemote> remotes = remoteService.queryTelecontrolContent(ids);
             JSONObject json_send = JsonResult.buildSuccess(remotes);

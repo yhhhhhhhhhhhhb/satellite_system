@@ -18,5 +18,5 @@ public interface LogService {
 
     Integer deleteLog(String time1,String time2);
 
-
+    Integer addLog(TLog log);
 }

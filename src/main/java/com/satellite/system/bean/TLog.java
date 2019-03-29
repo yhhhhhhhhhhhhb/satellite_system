@@ -52,4 +52,14 @@ public class TLog {
     public void setData(String data) {
         this.data = data == null ? null : data.trim();
     }
+
+    public TLog(Date datetime, String object, Integer type, String data) {
+        this.datetime = datetime;
+        this.object = object;
+        this.type = type;
+        this.data = data;
+    }
+
+    public TLog() {
+    }
 }

@@ -32,4 +32,10 @@ public class LogServiceImpl implements LogService{
         Integer i = logMapper.deleteLog(time1,time2);
         return i;
     }
+
+    @Override
+    public Integer addLog(TLog log) {
+        Integer i = logMapper.addLog(log);
+        return i;
+    }
 }
