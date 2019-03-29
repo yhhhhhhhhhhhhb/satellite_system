@@ -6,6 +6,7 @@ import com.satellite.system.bean.TSatelliteInfo;
 import com.satellite.system.service.SatelliteInfoService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,12 +99,30 @@ public class SatelliteInfoController {
             String businessDownErp = (String) map_recv.get("businessDownErp");
             String businessUpFre = (String) map_recv.get("businessUpFre");
             String businessUpGain = (String) map_recv.get("businessUpGain");
-            Float dipAngle = Float.parseFloat((String) map_recv.get("dipAngle"));
-            Float chek = Float.parseFloat((String) map_recv.get("chek"));
-            Float eccentricity = Float.parseFloat((String) map_recv.get("eccentricity"));
-            Float semiMajorAxis = Float.parseFloat((String) map_recv.get("semiMajorAxis"));
-            Float perigeeAngle = Float.parseFloat((String) map_recv.get("perigeeAngle"));
-            Float perigeeTime = Float.parseFloat((String) map_recv.get("perigeeTime"));
+            Float dipAngle = 0f;
+            Float chek = 0f;
+            Float eccentricity = 0f;
+            Float semiMajorAxis = 0f;
+            Float perigeeAngle = 0f;
+            Float perigeeTime = 0f;
+            if(map_recv.get("dipAngle")!=null){
+                dipAngle = Float.parseFloat((String) map_recv.get("dipAngle"));
+            }
+            if( map_recv.get("chek")!=null){
+                chek = Float.parseFloat((String) map_recv.get("chek"));
+            }
+            if(map_recv.get("eccentricity")!=null){
+                eccentricity = Float.parseFloat((String) map_recv.get("eccentricity"));
+            }
+            if(map_recv.get("semiMajorAxis")!=null){
+                semiMajorAxis = Float.parseFloat((String)map_recv.get("semiMajorAxis") );
+            }
+            if(map_recv.get("perigeeAngle")!=null){
+                perigeeAngle = Float.parseFloat((String) map_recv.get("perigeeAngle"));
+            }
+            if(map_recv.get("perigeeTime")!=null){
+                perigeeTime = Float.parseFloat((String) map_recv.get("perigeeTime"));
+            }
             TSatelliteInfo tSatelliteInfo = new TSatelliteInfo(satelliteId,nasaId,satelliteName,constellationId,satelliteType,telemetryFre,telemetryErp,telecontrolFre,telecontrolGain,dataDownFre,dataDownErp,dataUpFre,dataUpGain,businessDownFre,businessDownErp,businessUpFre,businessUpGain,dipAngle,chek,eccentricity,semiMajorAxis,perigeeAngle,perigeeTime);
             Integer i = satelliteInfoService.addSatelliteInfo(tSatelliteInfo);
             JSONObject json_send = JsonResult.buildSuccess(i);
@@ -121,6 +140,9 @@ public class SatelliteInfoController {
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             response.setHeader("Access-Control-Allow-Origin", "*");
             String satelliteId = (String) map_recv.get("satelliteId");
+            if(StringUtils.isBlank(satelliteId)){
+                return JsonResult.buildFaild("请检查参数！");
+            }
             Integer i = satelliteInfoService.deleteSatelliteInfo(satelliteId);
             JSONObject json_send = JsonResult.buildSuccess(i);
             return json_send;

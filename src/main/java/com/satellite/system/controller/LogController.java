@@ -7,6 +7,7 @@ import com.satellite.system.service.LogService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.DateUtil;
 import com.satellite.system.util.JsonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,9 @@ public class LogController {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             String time1 = (String) map_recv.get("time1");
             String time2 = (String) map_recv.get("time2");
+            if(StringUtils.isBlank(time1)||StringUtils.isBlank(time2)){
+                return JsonResult.buildFaild("请检查参数！");
+            }
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             List<TLog> tLogs = logService.queryLog(DateUtil.timeStamp2Date(time1,null),DateUtil.timeStamp2Date(time2,null));
             JSONObject json_send = JsonResult.buildSuccess(tLogs);

@@ -5,6 +5,7 @@ import com.satellite.system.bean.TGroundStationInfo;
 import com.satellite.system.service.GroundStationInfoService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,22 +51,28 @@ public class GroundStationInfoController {
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-            String number = (String) map_recv.get("groundId");
-            String groundName = (String) map_recv.get("groundName");
-            String groundType = (String) map_recv.get("groundType");
-            String groundTelementryFre = (String) map_recv.get("groundTelementryFre");
-            String groundTelemetryGain = (String) map_recv.get("groundTelemetryGain");
-            String groundTelecontrolFre = (String) map_recv.get("groundTelecontrolFre");
-            String groundTelecontrolErp = (String) map_recv.get("groundTelecontrolErp");
-            String dataDownFre = (String) map_recv.get("dataDownFre");
-            String dataDownGain = (String) map_recv.get("dataDownGain");
-            String dataUpFre = (String) map_recv.get("dataUpFre");
-            String dateUpErp = (String) map_recv.get("dataUpErp");
-            String lon = (String) map_recv.get("lon");
-            String lat = (String) map_recv.get("lat");
-            String ip = (String) map_recv.get("ip");
-            BigDecimal lonb = new BigDecimal(lon);
-            BigDecimal latb = new BigDecimal(lat);
+            String number = map_recv.get("groundId")==null?"":(String) map_recv.get("groundId");
+            String groundName =  map_recv.get("groundName")==null?"":(String) map_recv.get("groundName");
+            String groundType =  map_recv.get("groundType")==null?"":(String) map_recv.get("groundType");
+            String groundTelementryFre =  map_recv.get("groundTelementryFre")==null?"":(String) map_recv.get("groundTelementryFre");
+            String groundTelemetryGain =  map_recv.get("groundTelemetryGain")==null?"":(String) map_recv.get("groundTelemetryGain");
+            String groundTelecontrolFre = map_recv.get("groundTelecontrolFre")==null?"":(String) map_recv.get("groundTelecontrolFre");
+            String groundTelecontrolErp = map_recv.get("groundTelecontrolErp")==null?"":(String) map_recv.get("groundTelecontrolErp");
+            String dataDownFre =  map_recv.get("dataDownFre")==null?"":(String) map_recv.get("dataDownFre");
+            String dataDownGain = map_recv.get("dataDownGain")==null?"":(String) map_recv.get("dataDownGain");
+            String dataUpFre =  map_recv.get("dataUpFre")==null?"":(String) map_recv.get("dataUpFre");
+            String dateUpErp =  map_recv.get("dataUpErp")==null?"":(String) map_recv.get("dataUpErp");
+            String lon =  map_recv.get("lon")==null?"":(String) map_recv.get("lon");
+            String lat =  map_recv.get("lat")==null?"":(String) map_recv.get("lat");
+            String ip =  map_recv.get("ip")==null?"":(String) map_recv.get("ip");
+            BigDecimal lonb = BigDecimal.valueOf(0L);
+            BigDecimal latb = BigDecimal.valueOf(0L);
+            if(StringUtils.isNotBlank(lon)){
+                 lonb = new BigDecimal(lon);
+            }
+            if(StringUtils.isNotBlank(lat)){
+                 latb = new BigDecimal(lat);
+            }
             TGroundStationInfo tGroundStationInfo = new TGroundStationInfo(number,groundName,groundType,groundTelementryFre,groundTelemetryGain,groundTelecontrolFre,groundTelecontrolErp,dataDownFre,dataDownGain,dataUpFre,dateUpErp,lonb,latb,ip);
             Integer i = groundStationInfoService.addGroundStationInfo(tGroundStationInfo);
             response.setHeader("Access-Control-Allow-Origin", "*");
@@ -98,22 +105,28 @@ public class GroundStationInfoController {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             response.setHeader("Access-Control-Allow-Origin", "*");
-            String number = (String) map_recv.get("groundId");
-            String groundName = (String) map_recv.get("groundName");
-            String groundType = (String) map_recv.get("groundType");
-            String groundTelementryFre = (String) map_recv.get("groundTelementryFre");
-            String groundTelemetryGain = (String) map_recv.get("groundTelemetryGain");
-            String groundTelecontrolFre = (String) map_recv.get("groundTelecontrolFre");
-            String groundTelecontrolErp = (String) map_recv.get("groundTelecontrolErp");
-            String dataDownFre = (String) map_recv.get("dataDownFre");
-            String dataDownGain = (String) map_recv.get("dataDownGain");
-            String dataUpFre = (String) map_recv.get("dataUpFre");
-            String dateUpErp = (String) map_recv.get("dataUpErp");
-            String lon = (String) map_recv.get("lon");
-            String lat = (String) map_recv.get("lat");
-            String ip = (String) map_recv.get("ip");
-            BigDecimal lonb = new BigDecimal(lon);
-            BigDecimal latb = new BigDecimal(lat);
+            String number = map_recv.get("groundId")==null?"":(String) map_recv.get("groundId");
+            String groundName =  map_recv.get("groundName")==null?"":(String) map_recv.get("groundName");
+            String groundType =  map_recv.get("groundType")==null?"":(String) map_recv.get("groundType");
+            String groundTelementryFre =  map_recv.get("groundTelementryFre")==null?"":(String) map_recv.get("groundTelementryFre");
+            String groundTelemetryGain =  map_recv.get("groundTelemetryGain")==null?"":(String) map_recv.get("groundTelemetryGain");
+            String groundTelecontrolFre = map_recv.get("groundTelecontrolFre")==null?"":(String) map_recv.get("groundTelecontrolFre");
+            String groundTelecontrolErp = map_recv.get("groundTelecontrolErp")==null?"":(String) map_recv.get("groundTelecontrolErp");
+            String dataDownFre =  map_recv.get("dataDownFre")==null?"":(String) map_recv.get("dataDownFre");
+            String dataDownGain = map_recv.get("dataDownGain")==null?"":(String) map_recv.get("dataDownGain");
+            String dataUpFre =  map_recv.get("dataUpFre")==null?"":(String) map_recv.get("dataUpFre");
+            String dateUpErp =  map_recv.get("dataUpErp")==null?"":(String) map_recv.get("dataUpErp");
+            String lon =  map_recv.get("lon")==null?"":(String) map_recv.get("lon");
+            String lat =  map_recv.get("lat")==null?"":(String) map_recv.get("lat");
+            String ip =  map_recv.get("ip")==null?"":(String) map_recv.get("ip");
+            BigDecimal lonb = BigDecimal.valueOf(0L);
+            BigDecimal latb = BigDecimal.valueOf(0L);
+            if(StringUtils.isNotBlank(lon)){
+                lonb = new BigDecimal(lon);
+            }
+            if(StringUtils.isNotBlank(lat)){
+                latb = new BigDecimal(lat);
+            }
             TGroundStationInfo tGroundStationInfo = new TGroundStationInfo(number,groundName,groundType,groundTelementryFre,groundTelemetryGain,groundTelecontrolFre,groundTelecontrolErp,dataDownFre,dataDownGain,dataUpFre,dateUpErp,lonb,latb,ip);
             Integer i = groundStationInfoService.updateGroundStationInfo(tGroundStationInfo);
             JSONObject json_send = JsonResult.buildSuccess(i);

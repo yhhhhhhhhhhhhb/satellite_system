@@ -5,6 +5,7 @@ import com.satellite.system.bean.TEquipmentRe;
 import com.satellite.system.service.EquipmentReService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,10 @@ public class EquipmentReController {
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-            String satellited = (String) map_recv.get("satelliteId");
+            String satellited = map_recv.get("satelliteId")==null?"":(String)map_recv.get("satelliteId");
+            if(StringUtils.isBlank(satellited)){
+                return JsonResult.buildFaild("参数未传正确");
+            }
             List<TEquipmentRe> list = equipmentReService.queryDeviceRelation(Integer.parseInt(satellited));
             JSONObject json_send = JsonResult.buildSuccess(list);
             response.setHeader("Access-Control-Allow-Origin", "*");

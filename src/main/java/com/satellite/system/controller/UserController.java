@@ -8,6 +8,7 @@ import com.satellite.system.service.LogService;
 import com.satellite.system.service.UserService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,10 +91,13 @@ public class UserController {
     public JSONObject editUsers(HttpServletRequest request, HttpServletResponse response){
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-            String id = (String)map_recv.get("id");
-            String userName = (String) map_recv.get("userName");
-            String password = (String) map_recv.get("password");
-            String permission = (String) map_recv.get("permission");
+            String id = map_recv.get("id")==null?"":(String)map_recv.get("id");
+            String userName = map_recv.get("userName")==null?"":(String)map_recv.get("userName");
+            String password =  map_recv.get("password")==null?"":(String) map_recv.get("password");
+            String permission = map_recv.get("permission")==null?"":(String) map_recv.get("permission");
+            if(StringUtils.isBlank(id)||StringUtils.isBlank(userName)||StringUtils.isBlank(password)||StringUtils.isBlank(permission)){
+                return JsonResult.buildFaild("请传正确的参数！");
+            }
             TUser user = new TUser();
             user.setId(Integer.parseInt(id));
             user.setUsername(userName);

@@ -5,6 +5,7 @@ import com.satellite.system.bean.TConstellationInfo;
 import com.satellite.system.service.ConstellationInfoService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,10 @@ public class ConstellationInfoController {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             response.setHeader("Access-Control-Allow-Origin", "*");
-            String number = (String) map_recv.get("constellationId");
+            String number = map_recv.get("constellationId")==null?"":(String) map_recv.get("constellationId");
+            if(StringUtils.isBlank(number)){
+                return JsonResult.buildFaild("检查参数是否正确！");
+            }
             List<TConstellationInfo> constellationInfos = constellationInfoService.getListById(number);
             JSONObject json_send = JsonResult.buildSuccess(constellationInfos);
             return json_send;
@@ -67,11 +71,15 @@ public class ConstellationInfoController {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             response.setHeader("Access-Control-Allow-Origin", "*");
-            String number = (String) map_recv.get("constellationId");
-            String constellationName = (String) map_recv.get("constellationName");
-            Integer constellationType = Integer.parseInt((String) map_recv.get("constellationType"));
-            String constellationOwners = (String) map_recv.get("constellationOwners");
-            TConstellationInfo constellationInfo = new TConstellationInfo(number,constellationName,constellationType,constellationOwners);
+            String number =  map_recv.get("constellationId")==null?"":(String) map_recv.get("constellationId");
+            String constellationName =  map_recv.get("constellationName")==null?"":(String) map_recv.get("constellationName");
+            String constellationType = map_recv.get("constellationType")==null?"":(String) map_recv.get("constellationType");
+            Integer constellationTypeInt = 0;
+            if(StringUtils.isNotBlank(constellationType)){
+                constellationTypeInt = Integer.parseInt((String) map_recv.get("constellationType"));
+            }
+            String constellationOwners =  map_recv.get("constellationOwners")==null?"":(String) map_recv.get("constellationOwners");
+            TConstellationInfo constellationInfo = new TConstellationInfo(number,constellationName,constellationTypeInt,constellationOwners);
             Integer affect = constellationInfoService.addTConstellationInfo(constellationInfo);
             JSONObject json_send = JsonResult.buildSuccess(affect);
             return json_send;
@@ -87,11 +95,15 @@ public class ConstellationInfoController {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             response.setHeader("Access-Control-Allow-Origin", "*");
-            String number = (String) map_recv.get("constellationId");
-            String constellationName = (String) map_recv.get("constellationName");
-            Integer constellationType = Integer.parseInt((String) map_recv.get("constellationType"));
-            String constellationOwners = (String) map_recv.get("constellationOwners");
-            TConstellationInfo constellationInfo = new TConstellationInfo(number,constellationName,constellationType,constellationOwners);
+            String number =  map_recv.get("constellationId")==null?"":(String) map_recv.get("constellationId");
+            String constellationName =  map_recv.get("constellationName")==null?"":(String) map_recv.get("constellationName");
+            String constellationType = map_recv.get("constellationType")==null?"":(String) map_recv.get("constellationType");
+            Integer constellationTypeInt = 0;
+            if(StringUtils.isNotBlank(constellationType)){
+                constellationTypeInt = Integer.parseInt((String) map_recv.get("constellationType"));
+            }
+            String constellationOwners =  map_recv.get("constellationOwners")==null?"":(String) map_recv.get("constellationOwners");
+            TConstellationInfo constellationInfo = new TConstellationInfo(number,constellationName,constellationTypeInt,constellationOwners);
             Integer affect = constellationInfoService.updateTConstellationInfo(constellationInfo);
             JSONObject json_send = JsonResult.buildSuccess(affect);
             return json_send;
