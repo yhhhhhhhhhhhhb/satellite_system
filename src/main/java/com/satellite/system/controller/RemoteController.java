@@ -36,7 +36,7 @@ public class RemoteController {
     public JSONObject queryTelecontrlContent(HttpServletRequest request, HttpServletResponse response){
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-            String ids = (String) map_recv.get("data");
+            String ids = (String) map_recv.get("taskID");
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             List<TRemote> remotes = remoteService.queryTelecontrolContent(ids);
             JSONObject json_send = JsonResult.buildSuccess(remotes);

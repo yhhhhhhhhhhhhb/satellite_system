@@ -59,7 +59,7 @@ public class TaskAllocationController {
     public JSONObject cancelTask(HttpServletRequest request, HttpServletResponse response){
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-            String taskIDs = (String) map_recv.get("taskIds");
+            String taskIDs = (String) map_recv.get("taskID");
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             Integer affect = taskAllocationService.cancelTask(taskIDs);
             JSONObject json_send = JsonResult.buildSuccess(affect);

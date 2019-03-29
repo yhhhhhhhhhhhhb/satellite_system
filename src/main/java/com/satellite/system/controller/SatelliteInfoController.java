@@ -35,7 +35,7 @@ public class SatelliteInfoController {
     public JSONObject queryDownRecord(HttpServletRequest request, HttpServletResponse response){
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-            String ids = (String) map_recv.get("taskIds");
+            String ids = (String) map_recv.get("taskID");
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             List<TSatelliteInfo> satelliteInfos = satelliteInfoService.getDownListByTaskId(ids);
             JSONObject json_send = JsonResult.buildSuccess(satelliteInfos);
@@ -51,7 +51,7 @@ public class SatelliteInfoController {
     public JSONObject queryDownData(HttpServletRequest request, HttpServletResponse response){
         try {
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-            String ids = (String) map_recv.get("taskIds");
+            String ids = (String) map_recv.get("taskID");
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             List<TSatelliteInfo> satelliteInfos = satelliteInfoService.getDownListByTaskId(ids);
             JSONObject json_send = JsonResult.buildSuccess(satelliteInfos);
