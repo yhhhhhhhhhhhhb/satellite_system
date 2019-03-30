@@ -9,6 +9,7 @@ import com.satellite.system.service.LogService;
 import com.satellite.system.service.UserDictService;
 import com.satellite.system.service.UserService;
 import com.satellite.system.util.CommonUtil;
+import com.satellite.system.util.DateUtil;
 import com.satellite.system.util.JsonResult;
 import com.satellite.system.util.JwtUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -47,6 +48,7 @@ public class UserController {
     @RequestMapping("/login")
     public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
         try {
+            userDictService.deleteBytime(DateUtil.getDay());
             Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
             response.setHeader("Access-Control-Allow-Origin", "*");
             String userName = (String) map_recv.get("userName");

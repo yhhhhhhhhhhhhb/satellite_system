@@ -2,6 +2,7 @@ package com.satellite.system.util;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -28,5 +29,10 @@ public class DateUtil {
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(new Date(Long.valueOf(seconds + "000")));
+    }
+
+    public static String getDay(){
+        LocalDate today = LocalDate.now();
+        return today.toString();
     }
 }
