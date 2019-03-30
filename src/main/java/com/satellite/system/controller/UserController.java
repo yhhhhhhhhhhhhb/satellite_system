@@ -3,11 +3,14 @@ package com.satellite.system.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.satellite.system.bean.TLog;
 import com.satellite.system.bean.TUser;
+import com.satellite.system.bean.TUserDict;
 import com.satellite.system.model.User;
 import com.satellite.system.service.LogService;
+import com.satellite.system.service.UserDictService;
 import com.satellite.system.service.UserService;
 import com.satellite.system.util.CommonUtil;
 import com.satellite.system.util.JsonResult;
+import com.satellite.system.util.JwtUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +41,9 @@ public class UserController {
     @Autowired
     LogService logService;
 
+    @Autowired
+    UserDictService userDictService;
+
     @RequestMapping("/login")
     public JSONObject login(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -47,9 +53,13 @@ public class UserController {
             String password = (String) map_recv.get("password");
             logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
             Integer count = userService.login(userName,password);
-            Map<String,Integer> map = new HashMap<>();
+            Map<String,Object> map = new HashMap<>();
             map.put("isLogin",count);
             if(count>0){
+                String token = JwtUtil.createToken(userName);
+                map.put("token",token);
+                TUserDict userDict = new TUserDict(userName,token,new Date());
+                userDictService.addToken(userDict);
                 TLog log = new TLog(new Date(),"登录模块",12000,userName+"登录成功！");
                 logService.addLog(log);
             }else {
@@ -57,7 +67,7 @@ public class UserController {
                 logService.addLog(log);
             }
             JSONObject json_send = JsonResult.buildSuccess(map);
-
+            logger.info("token:"+ JwtUtil.createToken(userName));
             return json_send;
         } catch (Exception e) {
             logger.error("登录失败！",e);
@@ -67,18 +77,27 @@ public class UserController {
 
     @RequestMapping("/exit")
     public JSONObject exit(HttpServletRequest request, HttpServletResponse response) {
-        Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
-        String userName = (String) map_recv.get("userName");
-        logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
-        JSONObject json_send = JsonResult.buildSuccess("");
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        TLog log = new TLog(new Date(),"登录模块",12001,userName+"退出！");
-        logService.addLog(log);
-        return json_send;
+        JSONObject json_send = null;
+        try {
+            Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
+            String userName = (String) map_recv.get("userName");
+            logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
+            json_send = JsonResult.buildSuccess("退出成功");
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            TLog log = new TLog(new Date(),"登录模块",12001,userName+"退出！");
+            logService.addLog(log);
+            userDictService.deleteUserDict(userName);
+            return json_send;
+        } catch (Exception e) {
+            return JsonResult.buildSuccess("退出失败");
+        }
     }
 
     @RequestMapping("/queryUsers")
     public JSONObject getAllUser(HttpServletRequest request, HttpServletResponse response){
+        if(response.getStatus()==401){
+            return JsonResult.buildFaild("token校验失败");
+        }
         Map<String, Object> map_recv = CommonUtil.getParameterMap(request);
         logger.info(">>> recv: ip="+request.getRemoteAddr()+", "+ request.getRequestURI()+", "+map_recv);
         List<User> users = userService.getAllUser();
